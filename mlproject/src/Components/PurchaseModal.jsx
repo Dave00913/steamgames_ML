@@ -23,7 +23,7 @@ const PurchaseModal = ({ isOpen, selectedGame, closeModal, onPurchase }) => {
       <p>Are you sure you want to purchase {selectedGame}?</p>
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         <button onClick={closeModal}>Cancel</button>
-        <button onClick={() => onPurchase(selectedGame)}>Purchase</button>
+        <button onClick={() => onPurchase(selectedGame)}>Confirm Purchase</button>
       </div>
     </Modal>
   );
