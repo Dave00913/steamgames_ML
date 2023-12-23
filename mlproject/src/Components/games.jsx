@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { data } from "../Data/data.jsx";
 import PurchaseModal from "./PurchaseModal.jsx";
-import Alert from '@mui/material/Alert';
-import Stack from '@mui/material/Stack';
+//import Alert from '@mui/material/Alert';
+//import Stack from '@mui/material/Stack';
 
 const Games = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedGame, setSelectedGame] = useState(null);
-  const [alertMessage, setAlertMessage] = useState('');
+  //const [alertMessage, setAlertMessage] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const [visibleGames, setVisibleGames] = useState(20);
 
