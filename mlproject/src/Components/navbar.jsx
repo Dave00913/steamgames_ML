@@ -1,12 +1,21 @@
-import React from "react";
+import React from 'react';
 
-const navbar = () => {
+const Navbar = () => {
   return (
-    <div className="flex items-center justify-between px-4 py-6">
-      <h1 className="text-red-600 text-4xl font-bold cursor-pointer">DAVE ALIVIO</h1>
-    
-    </div>
+    <nav className="p-8">
+      <div className="container mx-auto flex items-center justify-between">
+        <div className="flex items-center">
+          <span className="text-4xl text-red-600 font-semibold">STEAM GAMES</span>
+        </div>
+        <div className="flex mr-16 space-x-20">
+          <a href="#home" className="text-white mr-4">Home</a>
+          <a href="#community" className="text-white mr-4">Community</a>
+          <a href="#about" className="text-white mr-4">About</a>
+          <a href="#contact" className="text-white">Contact</a>
+        </div>
+      </div>
+    </nav>
   );
 };
 
-export default navbar;
+export default Navbar;
