@@ -1,5 +1,5 @@
-import React from 'react'
-import bgimg from '../Assets/bgimg.jpeg'
+import React from "react";
+import bgimg from "../Assets/bgimg.jpeg";
 
 const hero = () => {
     return (
@@ -7,7 +7,7 @@ const hero = () => {
                 <div className='relative'>
                         {/*Overlay*/}
                         <div className='absolute w-full h-full text-gray-200 '>
-                                <h1 className="text-4xl font-bold text-white py-6"> </h1>
+                                <h1 className="text-4xl font-bold text-white py-6">UWWWUUUUU </h1>
                         
                         </div>
              <img src={bgimg} />
@@ -16,4 +16,4 @@ const hero = () => {
     )
 }
 
-export default hero
+export default hero;
