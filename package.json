@@ -1,5 +1,23 @@
 {
   "dependencies": {
     "concurrently": "^8.2.2"
-  }
+  },
+  "name": "final-project",
+  "description": "ml project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently \"cd mlproject && npm start\" \"cd server && python main.py\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/Dave00913/steamgames_ML"
+  },
+  "keywords": [
+    "ml"
+  ],
+  "author": "ml_boys",
+  "license": "ISC"
 }
