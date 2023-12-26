@@ -68,7 +68,7 @@ const Games = () => {
           placeholder="Search for a game..."
           value={searchTerm}
           onChange={handleSearch}
-          className="w-80 p-2 border border-gray-300 rounded"
+          className="w-80 p-2 border border-gray-300 bg-transparent rounded text-white"
         />
       </div>
 

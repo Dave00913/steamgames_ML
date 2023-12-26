@@ -28,9 +28,6 @@ const PurchaseModal = ({ isOpen, selectedGame, closeModal, onPurchase }) => {
 <h1 className="text-white text-2xl my-7">Are you sure you want to purchase <a className="text-red-600">{selectedGame}</a> ?</h1>
 
       <div className='text-right my-20'>
-        
-        
-        
         <button className = "mx-7 text-green-700 text-xl" onClick={() => onPurchase(selectedGame)}>Confirm Purchase</button>
         <button className = "mx-7 text-red-700 text-xl"  onClick={closeModal}>Cancel</button>
       </div>
