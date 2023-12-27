@@ -8,8 +8,8 @@ CORS(app)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:michalyael@localhost/ml'
 
-@app.route('/', methods=['GET', 'POST'])
-def home():
+@app.route('/<gameTitle>', methods=['GET', 'POST'])
+def home(gameTitle):
   if request.method == 'GET':
     result = get_games()
 
@@ -17,15 +17,21 @@ def home():
 
   elif request.method == 'POST':
 
+    purchase_game(gameTitle)
+
     result = get_user_games()
-    
+
     game_list = []
 
     # convert to unnested list
     for i in range(len(result)):
       game_list.append(result[i][0])
 
-    return create_reco(game_list)
+    output = create_reco(game_list)
+    game_dict = output['game']
+    game_list = list(game_dict.values())
+
+    return game_list
 
 if __name__ == '__main__':
   app.run(debug=True)

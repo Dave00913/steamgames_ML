@@ -126,6 +126,6 @@ def create_reco(games):
   # Example usage with a list of input games
   result = gameRec(games)
 
-  return result.to_json()
+  return result.to_dict()
 
 __all__ = ["create_df", "create_reco", "get_purchased"]
