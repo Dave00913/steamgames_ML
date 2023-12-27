@@ -5,7 +5,7 @@ const Navbar = () => {
     <nav className="p-4 mt-4">
       <div className="container mx-auto flex items-center justify-between">
         <div className="flex items-center">
-          <span className="text-red-600 text-4xl font-semibold">STEAM GAMES</span>
+          <span className="text-red-600 text-4xl font-semibold">STEAMED GAMES</span>
         </div>
         <div className="flex items-center space-x-14 text-lg mr-48">
           <a href="#home" className="text-white mr-4">Store</a>

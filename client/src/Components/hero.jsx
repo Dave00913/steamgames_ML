@@ -8,7 +8,7 @@ const hero = () => {
         {/*Overlay*/}
         <div className="absolute w-full h-full text-gray-200 ">
           <h1 className="text-4xl font-bold text-white py-6 ml-8">
-            Steam Games: Where AI Powers Your Play.
+            Where AI Powers Your Play.
           </h1>
         </div>
         <img src={bgimg} />

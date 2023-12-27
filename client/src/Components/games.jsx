@@ -13,22 +13,8 @@ const Games = () => {
   //const [alertMessage, setAlertMessage] = useState('');
   const [visibleGames, setVisibleGames] = useState(20);
   const [purchasedItem, setPurchasedItem] = useState(null);
-  const [gamesFromServer, setGamesFromServer] = useState([]);
+  const [recommendations, setRecommendations ] = useState([]); 
 
-  useEffect(() => {
-    // Use the getAllGames function to make the GET request
-    getAllGames()
-      .then((response) => {
-        // Assuming the response is an array of games
-        setGamesFromServer(response);
-      })
-      .catch((error) => {
-        console.error("Error fetching games:", error);
-        // Handle error if needed
-      });
-  }, []); // Empty dependency array means this effect runs once when the component mounts
-
-  console.log(gamesFromServer)
 // const handlePurchase = (gameName) => {
 //   setAlertMessage(`Purchase of ${gameName} successful!`);
 
@@ -46,11 +32,26 @@ const Games = () => {
     setIsModalOpen(false);
   };
 
-  const handlePurchaseConfirmation = (gameName) => {
-    console.log(`Confirmed purchase of ${gameName}`);
+  const handlePurchaseConfirmation = async (gameName) => {
     setPurchasedItem(gameName);
+
+    // Create the request options
+    try {
+      const response = await fetch(`http://127.0.0.1:5000/${gameName}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ /* Your data here */ })
+      });
+      const data = await response.json();
+      setRecommendations(data);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+
     closeModal();
   };
+
+  console.log(recommendations)
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
@@ -80,32 +81,31 @@ const Games = () => {
       {purchasedItem && (
         <div>
           <h1 className="text-red-600 text-2xl font-bold text-center mt-8">
-            Recommendation based on your purchase
+            Recommendations Based on Your Purchases
           </h1>
           <div className="grid grid-cols-4 gap-4 mt-5 px-10">
-            <div className="hover:scale-105 duration-300">
-              {data
-                .filter((item) => item.name === purchasedItem)
-                .map((item) => (
-                  <div
-                    key={item.id}
-                    className="w-full h-[250px] object-cover rounded-t-lg rounded-b-lg text-white relative"
-                  >
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="w-full h-full object-cover rounded-t-lg rounded-b-lg"
-                    />
-                    <div className="absolute inset-0 flex items-center justify-center text-center"></div>
-                    <span className="text-lg flex justify-center">
-                      {purchasedItem}
-                    </span>
+              {recommendations
+                .map((item, index) => (
+                  <div className="hover:scale-105 duration-300">
+                    <div key={index} className="hover:scale-105 duration-300">
+                      <img
+                        src={data[Math.floor(Math.random() * 22) + 1].image}
+                        alt={item}
+                        className="w-full h-[250px] object-cover rounded-t-lg rounded-b-lg"
+                      />
+                      <div className="p-4">
+                        <p className="text-white font-bold text-center">{item}</p>
+                        <div className="flex justify-center mt-2">
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 ))}
             </div>
-          </div>
         </div>
       )}
+
+      {console.log(recommendations)}
 
       <h1 className="text-red-600 text-2xl font-bold text-center mt-8">
         Top Rated Games
