@@ -1,17 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { data } from "../Data/data.jsx";
 import PurchaseModal from "./PurchaseModal.jsx";
+import { getAllGames } from "../API/GetGames.js";
 //import Alert from '@mui/material/Alert';
 //import Stack from '@mui/material/Stack';
 
 const Games = () => {
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedGame, setSelectedGame] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   //const [alertMessage, setAlertMessage] = useState('');
   const [visibleGames, setVisibleGames] = useState(20);
   const [purchasedItem, setPurchasedItem] = useState(null);
-  
+  const [gamesFromServer, setGamesFromServer] = useState([]);
+
+  useEffect(() => {
+    // Use the getAllGames function to make the GET request
+    getAllGames()
+      .then((response) => {
+        // Assuming the response is an array of games
+        setGamesFromServer(response);
+      })
+      .catch((error) => {
+        console.error("Error fetching games:", error);
+        // Handle error if needed
+      });
+  }, []); // Empty dependency array means this effect runs once when the component mounts
+
+  console.log(gamesFromServer)
 // const handlePurchase = (gameName) => {
 //   setAlertMessage(`Purchase of ${gameName} successful!`);
 
