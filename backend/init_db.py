@@ -2,7 +2,7 @@ import psycopg2
 
 def get_games():
   try:
-    db = psycopg2.connect("dbname=ml user=postgres password=michalyael")
+    db = psycopg2.connect("dbname=ml user=postgres password=dij13")
     cur = db.cursor()
     # Execute a query to get unique values from the 'game' column
     cur.execute('SELECT DISTINCT game FROM public."steam-200k"')
@@ -22,7 +22,7 @@ def get_games():
       db.close()
 
 def get_user_games():
-  db = psycopg2.connect("dbname=ml user=postgres password=michalyael")
+  db = psycopg2.connect("dbname=ml user=postgres password=dij13")
   cur = db.cursor()
   cur.execute('SELECT * FROM public."games"')
   results = cur.fetchall()
@@ -31,7 +31,7 @@ def get_user_games():
   return results
 
 def purchase_game(title):
-  db = psycopg2.connect("dbname=ml user=postgres password=michalyael")
+  db = psycopg2.connect("dbname=ml user=postgres password=dij13")
   cur = db.cursor()
   cur.execute(f"INSERT INTO public.games(title) VALUES (%s);", (title,))
   db.commit()
